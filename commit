@@ -1,0 +1,7 @@
+//此文档记录每次提交
+
+Subject：leetcode  pre部分
+Description：1.找只出现一次的元素
+             2.找到最多的元素
+solution:1.异或
+         2.摩尔投票法
