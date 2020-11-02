@@ -1,4 +1,4 @@
-package Data.tree;
+package Data.RBtree;
 
 /**
  * 手写红黑树
@@ -12,7 +12,7 @@ package Data.tree;
  * ⑧修正插入导致红黑树失衡的方法定义：insertFIxUp(RBNode node);
  * ⑨测试红黑树正确性
  */
-public class RBTree< K extends Comparable, V> {
+public class RBTreeZ< K extends Comparable, V> {
 
     // 定义颜色
     private final static boolean RED = true;
@@ -20,6 +20,14 @@ public class RBTree< K extends Comparable, V> {
     private final static boolean BLACK = false;
 
     private RBNode root;
+
+    public RBNode getRoot() {
+        return root;
+    }
+
+    public void setRoot(RBNode root) {
+        this.root = root;
+    }
 
     //定义辅助方法
     private RBNode parentOf(RBNode node){
@@ -76,6 +84,15 @@ public class RBTree< K extends Comparable, V> {
    * 2.旋转点的子节点  指向 旋转点的右子节点， 旋转点右子节点的父节点指向旋转点的父节点
    * 3.将旋转点的父节点指向 旋转点的右子节点， 将旋转点右子节点的 左节点指向旋转点
    */
+
+    /**
+     * 红黑树左旋
+     * 1.将旋转点的右节点 的左子节点的父节点 指向 旋转点的右节点，将旋转点 右子节点指向  旋转点右子节点的左节点
+     * 2.将旋转点右子节点的父节点指向 旋转点的父节点，将旋转点 左子节点（右子节点）指向旋转点的右子节点
+     * 3.将旋转点的父节点指向旋转点的右子节点，旋转点右子节点的左子节点指向 旋转点
+     *
+     * @param node
+     */
     public void leftRoteta(RBNode node){
 
         RBNode rightChild = node.right;
@@ -88,7 +105,7 @@ public class RBTree< K extends Comparable, V> {
         }
 
         //如果当前节点就是根节点，不存在将 旋转点 的右节点与 旋转点 父节点建立关系这一步，只需要将 根节点 更新为 旋转点的右节点
-        if(node != root){
+        if(node.parent != null){
             //将 旋转点右节点的父节点 指向 旋转点的父节点
             rightChild.parent = node.parent;
             //将旋转点父节点的左子节点（右子节点）指向 旋转点的右子节点
@@ -125,7 +142,7 @@ public class RBTree< K extends Comparable, V> {
         }
 
         //如果旋转点是根节点，不需要建立左节点与旋转点父节点的关系，将根节点更新为旋转点的左节点即可
-        if(node != root){
+        if(node.parent != null){
             //将旋转点左节点 父节点指向旋转点的父节点
             leftChild.parent = node.parent;
             //将旋转点父节点的左子节点（右子节点）指向旋转点的左子节点
@@ -135,19 +152,14 @@ public class RBTree< K extends Comparable, V> {
                 node.parent.right = leftChild;
             }
         }else {
-            root = node.left;
+            root = leftChild;
+            this.root.parent = null;
         }
        //将旋转点的父节点指向旋转点的左子节点
-        node.parent = node.left;
+        node.parent = leftChild;
         //将旋转点 左子节点的右节点指向旋转点
         leftChild.right = node;
     }
-
-    /**
-     * 插入操作
-     * @param <K>
-     * @param <V>
-     */
 
     //对外插入接口
     public void insert(K key, V value) {
@@ -160,29 +172,32 @@ public class RBTree< K extends Comparable, V> {
 
     private void insert(RBNode node) {
 
-        RBNode parent = root;
+        RBNode parent = null;
+        RBNode x = this.root;
 
       //找到插入的位置
-        while (parent != null){
+        while (x != null){
+            parent = x;
 
             int index= node.key.compareTo(parent.key);
 
             if(index > 0){
-                parent = parent.right;
+                x = x.right;
             }else if(index == 0){
-                parent.setValue(node.value);
+                x.setValue(node.value);
                 return;
             }else {
-                parent = parent.left;
+                x = x.left;
             }
         }
 
         node.parent = parent;
-        if(root != null){
-            if(node.parent.key.compareTo(node.key) >0){
-                node.parent.left = node;
-            }else {
+
+        if(parent != null){
+            if(node.key.compareTo(node.parent.key) >0){
                 node.parent.right = node;
+            }else {
+                node.parent.left = node;
             }
         }else {
             root = node;
@@ -190,7 +205,6 @@ public class RBTree< K extends Comparable, V> {
 
        //红黑树矫正
         insertFixUp(node);
-
     }
 
     /**
@@ -206,16 +220,9 @@ public class RBTree< K extends Comparable, V> {
      *        4.3 叔叔节点不存在（或者为黑色），父亲节点为 爷爷节点的右子树
      *            4.3.1 插入节点为父节点的左子树(RL插入)
      *            4.3.2 插入节点父节点的右子树（RR插入)
-     *
-     *
      * @param node
      */
     private void insertFixUp(RBNode node) {
-        if(node.parent == null){
-            root = node;
-            node.setColor(BLACK);
-            return;
-        }
 
         RBNode parent = parentOf(node);
         RBNode gParent = parentOf(parent);
@@ -290,7 +297,7 @@ public class RBTree< K extends Comparable, V> {
 
         }
 
-
+        setBlack(this.root);
 
     }
 

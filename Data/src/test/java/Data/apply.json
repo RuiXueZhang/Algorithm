@@ -1,0 +1,133 @@
+{
+  "payload": {
+    "ahead": true,
+    "androidDeviceInfo": {
+      "androidId": "string",
+      "apn": "string",
+      "brand": "string",
+      "btMac": "string",
+      "channelNumber": "string",
+      "clientType": 0,
+      "deviceIndexId": 0,
+      "dpi": "string",
+      "gmtCreate": "2020-08-21T02:55:40.299Z",
+      "gmtModified": "2020-08-21T02:55:40.299Z",
+      "id": 0,
+      "imei": "string",
+      "imsi": "string",
+      "mac": "string",
+      "mobileStandard": "string",
+      "model": "string",
+      "operator": "string",
+      "osVersion": "string",
+      "phoneNumber": "string",
+      "resolution": "string",
+      "sdkVersion": "string"
+    },
+    "archive": true,
+    "cid": 0,
+    "clientCity": "string",
+    "clientISP": "string",
+    "clientProvince": "string",
+    "configInfo": "string",
+    "configRequest": {
+      "allConfig": true,
+      "keyList": [
+        "string"
+      ]
+    },
+    "envType": "Formal",
+    "extraId": "string",
+    "iosDeviceInfo": {
+      "apn": "string",
+      "channelNumber": "string",
+      "clientType": 0,
+      "deviceIndexId": 0,
+      "gmtCreate": "2020-08-21T02:55:40.299Z",
+      "gmtModified": "2020-08-21T02:55:40.299Z",
+      "id": 0,
+      "idfa": "string",
+      "idfav": "string",
+      "idfv": "string",
+      "mobileStandard": "string",
+      "model": "string",
+      "osVersion": "string",
+      "resolution": "string",
+      "sdkVersion": "string",
+      "udid": "string"
+    },
+    "noInputTimeout": 0,
+    "orientation": 0,
+    "payStr": "string",
+    "pcDeviceInfo": {
+      "brand": "string",
+      "channelNumber": "string",
+      "clientType": 0,
+      "cpuType": "string",
+      "deviceIndexId": 0,
+      "dpi": "string",
+      "gmtCreate": "2020-08-21T02:55:40.299Z",
+      "gmtModified": "2020-08-21T02:55:40.299Z",
+      "graphics": "string",
+      "hardDiskId": "string",
+      "id": 0,
+      "imei": "string",
+      "imsi": "string",
+      "macAddress": "string",
+      "memorySize": "string",
+      "openVtyn": "string",
+      "osVersion": "string",
+      "pcDid": "string",
+      "resolution": "string",
+      "sdkVersion": "string"
+    },
+    "playingTime": 0,
+    "protoData": "string",
+    "requestBitRate": -1,
+    "requestResolutionId": "",
+    "screenInfo": {
+      "dpi": "60",
+      "resolution": "1280x720"
+    },
+    "streamingTypes": [
+      "RTMP", "WEBRTC"
+    ],
+    "userInfo": {
+      "priority": 0,
+      "token": "string",
+      "userId": "string",
+      "userType": 0
+    },
+    "webDeviceInfo": {
+      "browserKernelType": "string",
+      "browserKernelVersion": "string",
+      "browserType": "string",
+      "browserVersion": "string",
+      "channelNumber": "string",
+      "clientType": 0,
+      "cookie": "string",
+      "deviceIndexId": 0,
+      "flashVersion": "string",
+      "gmtCreate": "2020-08-21T02:55:40.299Z",
+      "gmtModified": "2020-08-21T02:55:40.299Z",
+      "hwCoderSupport": 0,
+      "id": 0,
+      "osType": "string",
+      "sdkVersion": "string"
+    }
+  },
+  "request": {
+    "bid": "43da7a2cbdf",
+    "channel": "",
+    "clientType": "Web",
+    "encoded": "",
+    "env": "Formal",
+    "expiryInterval": 60000000000,
+    "pkgName": "jp.co.hit_point.tabikaeru",
+    "rand": "string",
+    "sdkVersion": "zhangruixue",
+    "timestamp": 0
+  },
+  "sign": "",
+  "transId": "string"
+}
